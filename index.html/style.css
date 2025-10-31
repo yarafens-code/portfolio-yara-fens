@@ -1,0 +1,637 @@
+/* =========================
+   COMPLETE style.css (PROJECT PAGINA READY - BEELDEN ORIGINEEL FORMAAT)
+   ========================= */
+
+   :root {
+    --bg: #f5f0e9;
+    --dark: #091c2a;
+    --accent: #c08497;
+    --deep: #6a2e35;
+    --placeholder-green: #77aa66;
+    --max-width: 1100px;
+    --nav-height: 80px;
+}
+
+/* Basic reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height:100%; scroll-behavior: smooth; }
+body {
+    font-family: "Montserrat", "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* NAVBAR */
+header.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245,240,233,0.97);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(9,28,42,0.08);
+    z-index: 1000;
+}
+.nav-inner {
+    width:100%;
+    max-width: var(--max-width);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 0 20px;
+}
+.brand { text-decoration:none; color:var(--deep); display:flex; align-items:baseline; font-size:32px; }
+.brand .y { font-family:"sloop-script-one", sans-serif; font-weight:500; color:var(--deep); margin-right:1px; }
+.brand .f { font-family:"Times New Roman", serif; font-weight:400; color:var(--deep); }
+
+/* Nav links */
+nav a {
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--deep);
+    margin-left: 24px;
+    text-decoration: none;
+    transition: color .22s ease;
+}
+nav a:hover { color: var(--accent); }
+nav a.active { color: var(--accent); }
+
+/* LANDING SECTION */
+.landing {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* TITLES */
+.subtitle {
+  font-family: "sloop-script-one", sans-serif;
+  font-size: 38px;
+  color: var(--dark);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.maintitle {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--dark);
+}
+.maintitle .upper {
+  font-family: "sloop-script-one", sans-serif;
+  font-weight: 500;
+  font-size: clamp(70px, 10vw, 110px);
+}
+.maintitle .rest {
+  font-family: "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(50px, 8vw, 90px);
+  line-height: 1;
+}
+.divider {
+  width: 2px;
+  height: 120px;
+  background: var(--dark);
+  margin: 40px auto 0;
+  position: relative;
+}
+.divider::after {
+  content: '';
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  width: 2px;
+  height: 22px;
+  background: var(--dark);
+  transform: translateX(-50%) rotate(180deg);
+}
+
+/* DECORATIEVE ELEMENTEN */
+/* GROTERE ROZE CIRKEL */
+.bg-circle {
+  position: absolute;
+  bottom: -100px;
+  right: -160px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(
+    circle,
+    rgba(192, 132, 151, 0.45) 0%,
+    rgba(192, 132, 151, 0) 70%
+  );
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.bg-line {
+  position: absolute;
+  top: 0;
+  left: 6%;              /* iets naar binnen in beeld */
+  width: 360px;
+  height: 100%;
+  z-index: 0;
+}
+
+.bg-line path {
+  fill: none;
+  stroke: rgba(192, 132, 151, 0.35);  /* zachte roze kleur */
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+
+/* STERREN */
+.star {
+  position: absolute;
+  background: var(--dark);
+  clip-path: polygon(50% 0, 52% 48%, 100% 50%, 52% 52%, 50% 100%, 48% 52%, 0 50%, 48% 48%);
+  opacity: 0.95;
+  z-index: 2;
+}
+.star.large { width: 60px; height: 60px; }
+.star.small { width: 25px; height: 25px; }
+
+.star-left.large { top: 45%; left: 10%; }
+.star-left.small { top: 55%; left: 14%; }
+
+/* ONDERSTE STERREN — PRECIES ONDER DE LIJN, MET RICHTING EN AFSTAND */
+.star-center.large {
+  bottom: 14%;               /* iets verder naar beneden */
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.star-center.small {
+  bottom: 19%;               /* iets hoger */
+  left: calc(50% + 30px);    /* een klein beetje naar rechts verschoven */
+  width: 28px;
+  height: 28px;
+  z-index: 2;
+}
+
+/* Works */
+.works {
+  max-width: var(--max-width);
+  margin: 0 auto;             /* centreert de hele sectie */
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* centreert de h2 en de grid */
+  margin-bottom: 120px;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 240px); /* drie projecten per rij */
+  gap: 24px;                                /* tussenruimte tussen projecten */
+  justify-content: center;                  /* centreert de items horizontaal */
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Responsief: op smalle schermen passen we het aantal kolommen aan */
+@media (max-width: 900px) {
+  .projects {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+    gap: 16px; /* iets kleinere gap op mobiel */
+  }
+}
+
+.works h2 { font-family: "Times New Roman"; font-size:32px; color:var(--deep); margin-bottom:30px; }
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 projecten naast elkaar */
+  gap: 24px;
+  justify-content: center; /* centreert de grid */
+  width: 100%;
+}
+
+/* Responsief: kleiner scherm */
+@media (max-width: 900px) {
+  .projects {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-content: center;
+  }
+}
+
+.project { background: white; border-radius:12px; padding:18px; text-decoration:none; color:var(--dark); box-shadow:0 6px 18px rgba(9,28,42,0.06); transition: transform .35s ease, box-shadow .3s ease; }
+/* Tekst in de projectboxen */
+.project .title,
+.project .meta {
+  color: #6a2e35; /* standaardkleur */
+  transition: color 0.3s ease; /* vloeiende overgang */
+}
+
+/* Hover / focus / actief */
+.project:hover .title,
+.project:hover .meta,
+.project:focus .title,
+.project:focus .meta,
+.project:active .title,
+.project:active .meta {
+  color: #c08497;
+}
+
+.project:hover { transform: translateY(-8px) scale(1.02); box-shadow:0 14px 28px rgba(9,28,42,0.12); }
+.project .thumb { background: linear-gradient(180deg,var(--placeholder-green),#5f9b4f); height:160px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; margin-bottom:12px; }
+.project .thumb img {
+  width: 100%;
+  height: 160px;       /* zelfde als je oude placeholder hoogte */
+  object-fit: cover;   /* vult het vak netjes op */
+  border-radius: 10px; /* behoudt afgeronde hoekjes */
+  display: block;
+}
+.project .title { font-weight:700; font-size:18px; }
+.project .meta { font-size:13px; color: rgba(9,28,42,0.7); }
+
+/* About */
+/* Over mij layout: afbeelding links, tekst rechts */
+.about {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 120px;
+}
+
+.about h2 {
+  font-family: "Times New Roman";
+  font-size: 32px;
+  color: var(--deep);
+  text-align: center; /* titel in het midden */
+  margin-bottom: 40px;
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px; /* ruimte tussen afbeelding en tekst */
+  flex-wrap: wrap; /* voor mobiel */
+}
+
+.about-image {
+  flex: 2;
+  max-width: 600px; /* pas aan naar wens */
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+.about-text {
+  flex: 1;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.about-text h2 {
+  font-family: "Times New Roman";
+  text-align: left;
+  color: var(--deep);
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   HOMEPAGE SECTION TITELS (Projecten & Over mij)
+   STIJL GELIJK AAN PROJECTPAGINA SUBKOPJES
+   ========================= */
+   #works h2,
+   #about h2 {
+       font-family: "Times New Roman", serif;
+       font-weight: 400;
+       font-size: clamp(22px, 2.5vw, 30px);
+       color: var(--dark);
+       margin-top: 60px;     /* ruimte vanaf bovenkant sectie */
+       margin-bottom: 28px;  /* ruimte onder de titel, gelijk aan projectpagina subkopjes */
+   }
+
+ #works,
+ #about {
+    scroll-margin-top: var(--nav-height); /* zelfde als navbar hoogte, 80px */
+}
+
+   
+
+
+/* FOOTER */
+footer { text-align:center; color:rgba(9,28,42,0.6); font-size:14px; padding:40px 0; }
+
+/* =========================
+   PROJECT PAGE LAYOUT (FINAL TUNING)
+   ========================= */
+.project-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 20px 60px;
+    text-align: left;
+}
+
+/* TITEL */
+.project-page h1 {
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 1.05;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.project-page h1 .upper {
+    font-family: "sloop-script-one", sans-serif;
+    font-weight: 500;
+    font-size: clamp(60px, 10vw, 110px);
+    line-height: 0.9;
+    color: var(--dark);
+    display: inline-block;
+    transform: translateY(-2px);
+}
+.project-page h1 .rest {
+    font-family: "Times New Roman", serif;
+    font-weight: 400;
+    font-size: clamp(32px, 6vw, 56px);
+    color: var(--dark);
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+/* ===== TERUG NAAR OVERZICHT-LINK (ONDER YF, GROTER, TITEL BLIJFT CENTRAAL) ===== */
+.back-arrow {
+  position: absolute;
+  top: calc(var(--nav-height) + 20px); /* iets onder de navbar/YF */
+  left: calc((100% - var(--max-width)) / 2 + 20px); /* lijn uit met YF */
+  text-decoration: none;
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  font-size: 40px; /* groter gemaakt */
+  color: #6a2e35;
+  transition: color 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.back-arrow:hover {
+  color: #c08497;
+  transform: translateX(-4px);
+}
+
+/* Op mobiel iets kleiner, beter gepositioneerd */
+@media (max-width: 900px) {
+  .back-arrow {
+    font-size: 18px;
+    left: 20px;
+    top: calc(var(--nav-height) + 15px);
+  }
+}
+
+
+/* INHOUD — tekst + afbeeldingen */
+.project-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
+.project-text {
+    flex: 1.1;
+}
+.project-text h3 {
+    font-family: "Times New Roman", serif;
+    font-weight: 400;
+    font-size: clamp(22px, 2.5vw, 30px);
+    margin: 28px 0 10px;
+    color: var(--dark);
+}
+.project-text p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+:root {
+  --gap: 16px; /* tussenruimte tussen de afbeeldingen */
+}
+
+/* Container voor het 4-vakken raster */
+.project-images {
+  position: relative;
+  width: 48%;            /* zelfde breedte, iets flexibeler */
+  max-width: 420px;      /* mag iets breder op grotere schermen */
+  aspect-ratio: 4 / 3.2; /* plattere verhouding dan 4/5 (meer liggend) */
+  margin: 0 auto;
+}
+
+/* Basisstijl voor vakken */
+.project-images .img-box {
+  position: absolute;
+  background: linear-gradient(180deg, #77aa66, #5f9b4f);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+/* Beeld 1: linksboven */
+.img1 {
+  top: 0;
+  left: 0;
+  width: calc(50% - var(--gap)/2);
+  height: calc(45% - var(--gap)/2);
+}
+
+/* Beeld 2: rechtsboven, iets hoger en langer */
+.img2 {
+  top: 0;
+  left: calc(50% + var(--gap)/2);
+  width: calc(50% - var(--gap)/2);
+  height: calc(55% - var(--gap)/2);
+}
+
+/* Beeld 3: linksonder */
+.img3 {
+  top: calc(45% + var(--gap)/2);
+  left: 0;
+  width: calc(50% - var(--gap)/2);
+  height: calc(55% - var(--gap)/2);
+}
+
+/* Beeld 4: rechtsonder */
+.img4 {
+  top: calc(55% + var(--gap)/2);
+  left: calc(50% + var(--gap)/2);
+  width: calc(50% - var(--gap)/2);
+  height: calc(45% - var(--gap)/2);
+}
+
+/* Responsief gedrag */
+@media (max-width: 900px) {
+  .project-images {
+    position: static;
+    width: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .project-images .img-box {
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ===== 3-AFBEELDINGEN LAYOUT (voor Reflecta & Verhalen zonder Woorden) ===== */
+.project-images.layout-3 {
+  position: relative;
+  width: 48%;
+  max-width: 420px;
+  aspect-ratio: 4 / 3.2;
+  margin: 0 auto;
+}
+
+.project-images.layout-3 .img-box {
+  position: absolute;
+  background: linear-gradient(180deg, #77aa66, #5f9b4f);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+/* BEELD 1: linker kolom, over drie rijen */
+.project-images.layout-3 .img1 {
+  top: 0;
+  left: 0;
+  width: calc(50% - var(--gap)/2);
+  height: 100%;
+}
+
+/* BEELD 2: rechtsboven, twee rijen hoog */
+.project-images.layout-3 .img2 {
+  top: 0;
+  left: calc(50% + var(--gap)/2);
+  width: calc(50% - var(--gap)/2);
+  height: 66.66%;
+}
+
+/* BEELD 3: rechtsonder, één rij hoog */
+.project-images.layout-3 .img3 {
+  top: calc(66.66% + var(--gap)/2);
+  left: calc(50% + var(--gap)/2);
+  width: calc(50% - var(--gap)/2);
+  height: 33.33%;
+}
+
+/* Responsief gedrag */
+@media (max-width: 900px) {
+  .project-images.layout-3 {
+    position: static;
+    width: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .project-images.layout-3 .img-box {
+    position: static;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ===== LAYOUT 4A — GROTE BLOKKEN MET TUSSENRUIMTE ===== */
+
+:root {
+  --gap: 16px; /* tussenruimte */
+}
+
+.project-images.layout-4a {
+  position: relative;
+  width: 48%;
+  max-width: 420px;
+  aspect-ratio: 4 / 3; /* iets breder: liggend ipv vierkant */
+  margin: 0 auto;
+}
+
+/* basisstijl */
+.project-images.layout-4a .img-box {
+  position: absolute;
+  background: linear-gradient(180deg, #77aa66, #5f9b4f);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+/* Afbeelding 1 */
+.project-images.layout-4a .img1 {
+  top: 0;
+  left: 0;
+  width: calc(50% - var(--gap) / 2);
+  height: calc(50% - var(--gap) / 2);
+}
+
+/* Afbeelding 2 */
+.project-images.layout-4a .img2 {
+  top: 0;
+  left: calc(50% + var(--gap) / 2);
+  width: calc(50% - var(--gap) / 2);
+  height: calc(50% - var(--gap) / 2);
+}
+
+/* Afbeelding 3 */
+.project-images.layout-4a .img3 {
+  top: calc(50% + var(--gap) / 2);
+  left: 0;
+  width: calc(50% - var(--gap) / 2);
+  height: calc(50% - var(--gap) / 2);
+}
+
+/* Afbeelding 4 */
+.project-images.layout-4a .img4 {
+  top: calc(50% + var(--gap) / 2);
+  left: calc(50% + var(--gap) / 2);
+  width: calc(50% - var(--gap) / 2);
+  height: calc(50% - var(--gap) / 2);
+}
+
+.project-images .img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* vult het vlak mooi op zonder te vervormen */
+  border-radius: 6px; /* volgt de hoekjes van de box */
+  display: block;
+}

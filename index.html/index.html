@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yara Fens — Portfolio</title>
+
+  <link rel="stylesheet" href="https://use.typekit.net/ptt4vjn.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand"><span class="y">Y</span><span class="f">F</span></a>
+      <nav>
+        <a href="#works" id="nav-works">Projecten</a>
+        <a href="#about" id="nav-about">Over mij</a>        
+      </nav>
+    </div>
+  </header>
+
+  <main>
+     <!-- ===== LANDING SECTION ===== -->
+  <section id="home" class="landing">
+    <!-- Achtergrondvormen -->
+    <div class="bg-circle"></div>
+    <svg class="bg-line" viewBox="0 0 400 800" preserveAspectRatio="none">
+      <path d="M300,0 
+               C200,150 100,250 220,400 
+               C340,550 180,650 100,800" />
+    </svg>
+    
+
+    <!-- Sterren -->
+    <div class="star star-left large"></div>
+    <div class="star star-left small"></div>
+    <div class="star star-center large"></div>
+    <div class="star star-center small"></div>
+
+
+    <!-- Titel en subtitel -->
+    <div class="title-wrapper">
+      <h2 class="subtitle">Design Portfolio</h2>
+      <h1 class="maintitle">
+        <span class="upper">Y</span><span class="rest">ara </span>
+        <span class="upper">F</span><span class="rest">ens</span>
+      </h1>
+      <div class="divider"></div>
+    </div>
+  </section>
+
+    <!-- ===== DUMMY CONTENT (om te kunnen scrollen) ===== -->
+    <section style="height:10vh"></section>
+
+    <!-- ===== JS: PARALLAX EFFECT ===== -->
+    <script>
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  
+  // Alleen de sterren die je wilt laten parallaxen
+  document.querySelectorAll('.star-left:not(.star-center').forEach(el => {
+    const speed = el.classList.contains('bg-circle') ? 0.25 :
+                  el.classList.contains('bg-line') ? 0.15 : 0.35;
+    el.style.transform = `translateY(${scrollY * speed}px)`;
+  });
+});
+
+    </script>
+
+    <section id="works" class="works">
+      <h2>Projecten</h2>
+      <div class="projects">
+        <a class="project" href="souper.html">
+          <div class="thumb"><img src="img/sw1.jpeg" alt="Souper Woman"></div>
+          <div class="title">Souper Woman</div>
+          <div class="meta">Gender (on)gelijkheid</div>
+        </a>
+    
+        <a class="project" href="nonsense.html">
+          <div class="thumb"><img src="img/nonsense2.jpeg" alt="Nonsense"></div>
+          <div class="title">Nonsense</div>
+          <div class="meta">Funky blikje</div>
+        </a>
+    
+        <a class="project" href="reflecta.html">
+          <div class="thumb"><img src="img/reflecta2.jpeg" alt="Reflecta."></div>
+          <div class="title">Reflecta.</div>
+          <div class="meta">Procesposter</div>
+        </a>
+    
+        <a class="project" href="wakeup.html">
+          <div class="thumb"><img src="img/wakeup2.jpeg" alt="Wake Up"></div>
+          <div class="title">Wake Up</div>
+          <div class="meta">Korte video</div>
+        </a>
+    
+        <a class="project" href="verhalen.html">
+          <div class="thumb"><img src="img/vzw3.jpeg" alt="Verhalen zonder Woorden"></div>
+          <div class="title">Verhalen zonder Woorden</div>
+          <div class="meta">Lawaai voor (stille) armoede</div>
+        </a>
+      </div>
+    </section>
+    
+
+    <section id="about" class="about">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="img/yarafens.png" alt="Yara Fens">
+        </div>
+        <div class="about-text">
+          <h2>Over mij</h2>
+          <p><strong>Mijn naam is Yara Fens</strong>, ik ben 18 jaar en ik ben tweedejaars student op de opleiding Communication & Multimedia Design. Mijn interesse ligt bij graphic design en film, maar ik vind het ook leuk om media daarbuiten te verkennen en daarmee te werken.</p>
+          <br>
+          <p>Met mijn ontwerpen wil ik gevoel en verhaal overbrengen naar mensen. Ik vind het interessant dat ontwerpen,    zonder (al te veel) tekst, een verhaal kunnen overbrengen en mensen kunnen raken. 
+            De onderwerpen waar ik over “vertel” rijken van vrolijke elementen tot maatschappelijke thema’s. 
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Yara Fens — Design Portfolio
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const navWorks = document.getElementById("nav-works");
+    const navAbout = document.getElementById("nav-about");
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (entry.target.id === "works") {
+            navWorks.classList.add("active");
+            navAbout.classList.remove("active");
+          } else if (entry.target.id === "about") {
+            navAbout.classList.add("active");
+            navWorks.classList.remove("active");
+          } else {
+            navAbout.classList.remove("active");
+            navWorks.classList.remove("active");
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sections.forEach((sec) => observer.observe(sec));
+  </script>
+
+</body>
+</html>
